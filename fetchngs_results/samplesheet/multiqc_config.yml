@@ -1,0 +1,17 @@
+sample_names_rename_buttons:
+  - sample
+  - experiment_accession
+  - run_accession
+  - sample_accession
+  - experiment_alias
+  - run_alias
+  - sample_alias
+  - experiment_title
+  - sample_title
+  - sample_description"
+sample_names_rename:
+  - ["SRX18120902", "SRX18120902", "SRR22141582", "SAMN31181857", "3790_E2F5", "3790_E2F5AlignedAddedreadgroupSortedDuprm.bai", "3790_E2F5_raw", "Illumina HiSeq 2500 sequencing: WGS of adult female (#3790_1) primary mammary tumor of FVB MMTV-Cre E2F5 (floxed/floxed) mouse", "3790", "Raw whole genome sequence reads for adult abdominal left mammary tumor"]
+  - ["SRX18120903", "SRX18120903", "SRR22141581", "SAMN31181858", "3790_tumor2_E2F5", "3790_tumor2_E2F5AlignedAddedreadgroupSortedDuprm.bai", "rep2", "Illumina HiSeq 2500 sequencing: WGS of adult female (#3790_2) primary mammary tumor of FVB MMTV-Cre E2F5 (floxed/floxed) mouse", "3790_tumor2", "Raw whole genome sequence reads for adult abdominal right mammary tumor"]
+  - ["SRX18120904", "SRX18120904", "SRR22141580", "SAMN31181859", "3976_E2F5", "3976_E2F5AlignedAddedreadgroupSortedDuprm.bai", "3976_E2F5_raw", "Illumina HiSeq 2500 sequencing: WGS of adult female (#3976) primary mammary tumor of FVB MMTV-Cre E2F5 (floxed/floxed) mouse", "3976", "Raw whole genome sequence reads for adult abdominal left mammary tumor"]
+  - ["SRX18120905", "SRX18120905", "SRR22141579", "SAMN31181860", "5492_E2F5", "5492_E2F5AlignedAddedreadgroupSortedDuprm.bai", "5492_E2F5_raw", "Illumina HiSeq 2500 sequencing: WGS of adult female (#5492) primary mammary tumor of FVB MMTV-Cre E2F5 (floxed/floxed) mouse", "5492", "Raw whole genome sequence reads for adult abdominal left mammary tumor"]
+  - ["SRX18120906", "SRX18120906", "SRR22141578", "SAMN31181861", "5691_E2F5", "5691_E2F5AlignedAddedreadgroupSortedDuprm.bai", "5691_E2F5_raw", "Illumina HiSeq 2500 sequencing: WGS of adult female (#5691) primary mammary tumor of FVB MMTV-Cre E2F5 (floxed/floxed) mouse", "5691", "Raw whole genome sequence reads for adult abdominal left mammary tumor"]
