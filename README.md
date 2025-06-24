@@ -4,5 +4,5 @@ Scripts for identification of ecDNA in MMTV-Cre E2F5-flox mouse model of breast 
 ## Steps
 1. Set up environment
 2. Fetch raw data
-3. Run nf-core/circdna
-4. Downstream analysis 
+3. nf-core/circdna (AmpliconArchitect)
+4. Downstream analysis (cycleViz & AmpliconReconstructor)
