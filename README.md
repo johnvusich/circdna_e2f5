@@ -1,8 +1,84 @@
 # circdna_e2f5
-Scripts for identification of ecDNA in MMTV-Cre E2F5-flox mouse model of breast cancer
 
-## Steps
-1. Set up environment
-2. Fetch raw data
-3. nf-core/circdna (AmpliconArchitect)
-4. Downstream analysis (cycleViz & AmpliconReconstructor)
+This repository contains scripts and resources used to identify extrachromosomal DNA (ecDNA) in the MMTV-Cre E2F5-flox mouse model of breast cancer. The analysis leverages the [nf-core/circdna](https://nf-co.re/circdna) pipeline and downstream tools including AmpliconArchitect, CycleViz, and AmpliconReconstructor.
+
+## Repository Structure
+
+```bash
+circdna_e2f5/
+├── fetchngs_results/         # Metadata and samplesheet for raw data
+│   ├── metadata/
+│   └── samplesheet/
+├── mosek_license_dir/        # MOSEK license required for AmpliconArchitect
+├── results/                  # Output from pipeline (e.g., sv_view images)
+│   └── ampliconsuite/
+├── run_circdna.sh            # Script to run nf-core/circdna
+├── run_fetchngs.sh           # Script to fetch raw fastq files via nf-core/fetchngs
+├── icer.config               # Custom config for running on MSU HPCC
+├── ids.csv                   # List of run accessions (e.g., SRX IDs)
+├── LICENSE
+├── README.md
+```
+
+## Requirements
+
+- [Nextflow](https://www.nextflow.io/) >= 22.10.1
+- [nf-core/fetchngs](https://nf-co.re/fetchngs) and [nf-core/circdna](https://nf-co.re/circdna)
+- Singularity (or Docker)
+- MOSEK license for AmpliconArchitect
+- Access to HPC with SLURM (configured in `icer.config`)
+
+## Installation
+
+Clone this repo:
+
+```bash
+git clone https://github.com/johnvusich/circdna_e2f5.git
+cd circdna_e2f5
+```
+
+## Step-by-Step Workflow
+
+### 1. Fetch Raw Sequencing Data
+
+Use `run_fetchngs.sh` to download data from SRA using the IDs listed in `ids.csv`.
+
+```bash
+bash run_fetchngs.sh
+```
+
+Edit `samplesheet.csv` and `multiqc_config.yml` as needed in `fetchngs_results/samplesheet/`.
+
+### 2. Run nf-core/circdna
+
+Use `run_circdna.sh` to launch the circular DNA analysis pipeline with AmpliconArchitect.
+
+```bash
+bash run_circdna.sh
+```
+
+This script uses `icer.config` for cluster-specific settings on the MSU HPCC.
+
+### 3. Downstream Analysis
+
+- **CycleViz** and **AmpliconReconstructor** can be run using output files from AmpliconArchitect.
+- Visual outputs (e.g., `.png` files) are stored in `results/ampliconsuite/ampliconarchitect/sv_view`.
+
+## Output
+
+Example output figures:
+- `SRX18120904_amplicon1.png`
+- `SRX18120906_amplicon1.png`
+
+See `results/ampliconsuite/ampliconarchitect/sv_view/` for more.
+
+## Citation
+
+If you use this code, please cite:
+
+- [nf-core/circdna pipeline](https://nf-co.re/circdna)
+- [AmpliconArchitect](https://github.com/virajbdeshpande/AmpliconArchitect)
+
+## License
+
+MIT License – see the [LICENSE](./LICENSE) file for details.
