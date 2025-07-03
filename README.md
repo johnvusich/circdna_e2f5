@@ -48,12 +48,7 @@ To set up the data repo, follow the [official instructions on the AmpliconArchit
 To reproduce this analysis using the mouse mm10 genome, run the following:
 
 ```bash
-mkdir -p data_repo
-echo export AA_DATA_REPO=$PWD/data_repo >> ~/.bashrc
-cd $AA_DATA_REPO && touch coverage.stats && chmod a+r coverage.stats
-source ~/.bashrc
-wget https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/mm10.tar.gz
-tar -xzf mm10.tar.gz
+bash setup_data_repo.sh
 ```
 
 ### Final Directory Structure Example
