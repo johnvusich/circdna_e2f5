@@ -134,8 +134,8 @@ These figures can be found in: `results/ampliconsuite/ampliconarchitect/sv_view/
 
 If you use this code, please cite:
 
-- [nf-core/circdna pipeline](https://nf-co.re/circdna)
-- [AmpliconArchitect](https://github.com/virajbdeshpande/AmpliconArchitect)
+- [nf-core/circdna pipeline](https://nf-co.re/circdna/1.1.0/#citations)
+- [AmpliconSuite-pipeline](https://github.com/AmpliconSuite/AmpliconSuite-pipeline/blob/master/CITATIONS.md)
 
 ## License
 
