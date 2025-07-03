@@ -43,7 +43,18 @@ cd circdna_e2f5
 
 AmpliconArchitect requires a structured reference data repository to function. This repository follows the naming convention `AA_data_repo`, but here we refer to it as `data_repo`.
 
-To set up the data repo for mouse (mm10), follow the [official instructions on the AmpliconArchitect GitHub](https://github.com/AmpliconSuite/AmpliconArchitect#setting-up-the-AA-data-repo) under the "mm10" section.
+To set up the data repo, follow the [official instructions on the AmpliconArchitect GitHub](https://github.com/AmpliconSuite/AmpliconArchitect#setting-up-the-AA-data-repo).
+
+To reproduce this analysis using the mouse mm10 genome, run the following:
+
+```bash
+mkdir -p data_repo
+echo export AA_DATA_REPO=$PWD/data_repo >> ~/.bashrc
+cd $AA_DATA_REPO && touch coverage.stats && chmod a+r coverage.stats
+source ~/.bashrc
+wget https://datasets.genepattern.org/data/module_support_files/AmpliconArchitect/mm10.tar.gz
+tar -xzf mm10.tar.gz
+```
 
 ### Final Directory Structure Example
 
