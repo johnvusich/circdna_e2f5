@@ -12,6 +12,7 @@ circdna_e2f5/
 ├── mosek_license_dir/        # MOSEK license required for AmpliconArchitect
 ├── results/                  # Output from pipeline (e.g., sv_view images)
 │   └── ampliconsuite/
+├── data_repo/                # Reference data required by AmpliconArchitect (for mm10)
 ├── run_circdna.sh            # Script to run nf-core/circdna
 ├── run_fetchngs.sh           # Script to fetch raw fastq files via nf-core/fetchngs
 ├── icer.config               # Custom config for running on MSU HPCC
@@ -26,6 +27,7 @@ circdna_e2f5/
 - [nf-core/fetchngs](https://nf-co.re/fetchngs) and [nf-core/circdna](https://nf-co.re/circdna)
 - Singularity (or Docker)
 - MOSEK license for AmpliconArchitect
+- Reference genome repository for AmpliconArchitect (see below)
 - Access to HPC with SLURM (configured in `icer.config`)
 
 ## Installation
@@ -37,6 +39,47 @@ git clone https://github.com/johnvusich/circdna_e2f5.git
 cd circdna_e2f5
 ```
 
+## Setting up `data_repo` for AmpliconArchitect (mm10)
+
+AmpliconArchitect requires a structured reference data repository to function. This repository follows the naming convention `AA_data_repo`, but here we refer to it as `data_repo`.
+
+To set up the data repo for mouse (mm10), follow the [official instructions on the AmpliconArchitect GitHub](https://github.com/AmpliconSuite/AmpliconArchitect#setting-up-the-data-repository-aa_data_repo) under the "mm10" section.
+
+### Final Directory Structure Example
+
+```bash
+circdna_e2f5/data_repo
+├── coverage.stats
+├── mm10
+│   ├── annotations
+│   │   ├── gencode.vM10.basic.annotation_genes.gff
+│   │   └── mm10GenomicSuperDup.tab
+│   ├── cancer
+│   │   ├── oncogene_list.txt
+│   │   └── oncogenes
+│   │       ├── AC_oncogene_set_mm10.gff
+│   │       └── mm10_consensus_oncogenes_list_from_hg19.gff
+│   ├── dummy_ploidy.vcf
+│   ├── file_list.txt
+│   ├── file_sources.txt
+│   ├── last_updated.txt
+│   ├── mm10-blacklist.v2.bed
+│   ├── mm10_centromere.bed
+│   ├── mm10_cnvkit_filtered_ref.cnn
+│   ├── mm10_conserved_gain5.bed
+│   ├── mm10_conserved_gain5_onco_subtract.bed
+│   ├── mm10.fa
+│   ├── mm10.fa.fai
+│   ├── mm10.Hardison.Excludable.full.bed
+│   ├── mm10_k35.mappability.bedgraph
+│   ├── mm10_merged_centromeres_conserved_sorted.bed
+│   ├── mm10_noAlt.fa.fai
+│   └── onco_bed.bed
+├── mm10.tar.gz
+```
+
+Make sure `data_repo` is accessible by the pipeline or container environment and define its path when running AmpliconArchitect manually, or ensure the environment is configured to detect it.
+
 ## Step-by-Step Workflow
 
 ### 1. Fetch Raw Sequencing Data
@@ -44,7 +87,7 @@ cd circdna_e2f5
 Use `run_fetchngs.sh` to download data from SRA using the IDs listed in `ids.csv`.
 
 ```bash
-sbatch run_fetchngs.sh
+bash run_fetchngs.sh
 ```
 
 Edit `samplesheet.csv` and `multiqc_config.yml` as needed in `fetchngs_results/samplesheet/`.
@@ -54,7 +97,7 @@ Edit `samplesheet.csv` and `multiqc_config.yml` as needed in `fetchngs_results/s
 Use `run_circdna.sh` to launch the circular DNA analysis pipeline with AmpliconArchitect.
 
 ```bash
-sbatch run_circdna.sh
+bash run_circdna.sh
 ```
 
 This script uses `icer.config` for cluster-specific settings on the MSU HPCC.
@@ -82,7 +125,6 @@ If you use this code, please cite:
 
 - [nf-core/circdna pipeline](https://nf-co.re/circdna)
 - [AmpliconArchitect](https://github.com/virajbdeshpande/AmpliconArchitect)
-- Any preprints or publications associated with this analysis (add here when available)
 
 ## License
 
