@@ -87,7 +87,7 @@ Make sure `data_repo` is accessible by the pipeline or container environment and
 Use `run_fetchngs.sh` to download data from SRA using the IDs listed in `ids.csv`.
 
 ```bash
-bash run_fetchngs.sh
+sbatch run_fetchngs.sh
 ```
 
 Edit `samplesheet.csv` and `multiqc_config.yml` as needed in `fetchngs_results/samplesheet/`.
@@ -97,7 +97,7 @@ Edit `samplesheet.csv` and `multiqc_config.yml` as needed in `fetchngs_results/s
 Use `run_circdna.sh` to launch the circular DNA analysis pipeline with AmpliconArchitect.
 
 ```bash
-bash run_circdna.sh
+sbatch run_circdna.sh
 ```
 
 This script uses `icer.config` for cluster-specific settings on the MSU HPCC.
