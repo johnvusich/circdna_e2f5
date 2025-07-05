@@ -10,6 +10,7 @@ circdna_e2f5/
 │   ├── metadata/
 │   └── samplesheet/
 ├── mosek_license_dir/        # MOSEK license required for AmpliconArchitect
+│   └── mosek.lic
 ├── results/                  # Output from pipeline (e.g., sv_view images)
 │   └── ampliconsuite/
 ├── data_repo/                # Reference data required by AmpliconArchitect (for mm10)
@@ -39,17 +40,41 @@ git clone https://github.com/johnvusich/circdna_e2f5.git
 cd circdna_e2f5
 ```
 
+## Getting a MOSEK Academic License
+
+AmpliconArchitect requires a MOSEK license. Academic users can request a free license as follows:
+
+1. Visit the [MOSEK license request page](https://www.mosek.com/products/academic-licenses/).
+2. Fill out the form using your academic email address.
+3. Once approved, download the license file (typically named `mosek.lic`).
+4. Place the file in the following path in your local setup:
+
+```bash
+circdna_e2f5/mosek_license_dir/mosek.lic
+```
+
+Ensure the path is correctly passed to the `--mosek_license_dir` parameter in the pipeline script.
+
 ## Setting up `data_repo` for AmpliconArchitect (mm10)
 
-AmpliconArchitect requires a structured reference data repository to function. This repository follows the naming convention `AA_data_repo`, but here we refer to it as `data_repo`.
+AmpliconArchitect requires a structured reference data repository to function. In this analysis, the repository is set up at:
 
-To set up the data repo, follow the [official instructions on the AmpliconArchitect GitHub](https://github.com/AmpliconSuite/AmpliconArchitect#setting-up-the-AA-data-repo).
+```
+$SCRATCH/circdna_e2f5/data_repo
+```
 
-To reproduce this analysis using the mouse mm10 genome, run the following:
+To set this up exactly as used in the pipeline, run the following script:
 
 ```bash
 bash setup_data_repo.sh
 ```
+
+This script will:
+
+- Create the expected `data_repo` directory
+- Download the `mm10.tar.gz` reference bundle
+- Unpack it with proper permissions
+- Set the `AA_DATA_REPO` environment variable (used by the pipeline)
 
 ### Final Directory Structure Example
 
