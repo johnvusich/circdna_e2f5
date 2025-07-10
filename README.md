@@ -6,7 +6,8 @@ This repository contains scripts and resources used to identify extrachromosomal
 
 ```bash
 circdna_e2f5/
-├── fetchngs_results/         # Metadata and samplesheet for raw data
+├── fetchngs_results/         # Metadata and samplesheet and raw data
+│   ├── fastq/
 │   ├── metadata/
 │   └── samplesheet/
 ├── mosek_license_dir/        # MOSEK license required for AmpliconArchitect
